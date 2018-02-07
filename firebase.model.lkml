@@ -1,6 +1,6 @@
 ### Replace connection parameter with your database connection name
 
-connection: "firebase_blocks"
+connection: "bigqueryfirebase"
 
 include: "*.view.lkml"         # include all views in this project
 include: "*.dashboard.lookml"  # include all dashboards in this project
@@ -110,11 +110,11 @@ explore: app_events {
   }
 
   # optional join - only if you want to look at daily, weekly, monthly active users
-  join: use_rolling_30_day_window {
+  join: window_30_view {
     view_label: "Daily, Weekly, Monthly Active Users"
     type: left_outer
     relationship: one_to_many
-    sql_on: ${app_events__user_dim__app_info.app_instance_id} = ${use_rolling_30_day_window.user_id} ;;
+    sql_on: ${app_events__user_dim__app_info.app_instance_id} = ${window_30_view.user_id} ;;
   }
 
 }

@@ -19,7 +19,7 @@ view: dates {
 
 }
 
-view: use_rolling_30_day_window
+view: window_30_view
 {
   derived_table: {
     sql:

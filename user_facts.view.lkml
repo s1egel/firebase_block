@@ -7,7 +7,7 @@ view: user_facts {
             app_events.*,
             'iOS' as platform,
             TIMESTAMP(PARSE_DATE('%Y%m%d', REGEXP_EXTRACT(_TABLE_SUFFIX,r'\d\d\d\d\d\d\d\d'))) AS _DATA_DATE
-          FROM `bigquery-connectors.firebase.app_events_*` as app_events
+          FROM `insight-timer-a1ac7.com_spotlightsix_zentimer_IOS.app_events_*` as app_events
 
         UNION ALL
 
@@ -15,7 +15,7 @@ view: user_facts {
             app_events.*,
             'Android' as platform,
             TIMESTAMP(PARSE_DATE('%Y%m%d', REGEXP_EXTRACT(_TABLE_SUFFIX,r'\d\d\d\d\d\d\d\d'))) AS _DATA_DATE
-          FROM `bigquery-connectors.firebase_android.app_events_*` as app_events
+          FROM `insight-timer-a1ac7.com_spotlightsix_zentimerlite2_ANDROID.app_events_*` as app_events
         )
 SELECT
   app_events__user_dim.user_id  AS app_events__user_dim_user_id,

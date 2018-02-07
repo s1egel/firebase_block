@@ -153,8 +153,8 @@
     height: 5
   - name: Active Users
     title: Active Users
-    model: use_rolling_30_day_window
-    explore: window_30_view
+    model: firebase
+    explore: app_events
     type: looker_line
     fields:
     - window_30_view.date

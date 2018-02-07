@@ -17,7 +17,7 @@ view: app_events {
             app_events.*,
             'iOS' as platform,
             TIMESTAMP(PARSE_DATE('%Y%m%d', REGEXP_EXTRACT(_TABLE_SUFFIX,r'\d\d\d\d\d\d\d\d'))) AS _DATA_DATE
-         FROM `bigquery-connectors.firebase.app_events_*` as app_events
+         FROM `insight-timer-a1ac7.com_spotlightsix_zentimer_IOS.app_events_*` as app_events
         -- add templated filter to reduce dataset to specified date partitions
         WHERE {% condition app_events.date_range%} TIMESTAMP(PARSE_DATE('%Y%m%d', REGEXP_EXTRACT(_TABLE_SUFFIX,r'\d\d\d\d\d\d\d\d'))) {% endcondition %}
 
@@ -28,7 +28,7 @@ view: app_events {
             app_events.*,
             'Android' as platform,
             TIMESTAMP(PARSE_DATE('%Y%m%d', REGEXP_EXTRACT(_TABLE_SUFFIX,r'\d\d\d\d\d\d\d\d'))) AS _DATA_DATE
-         FROM `bigquery-connectors.firebase_android.app_events_*` as app_events
+         FROM `insight-timer-a1ac7.com_spotlightsix_zentimerlite2_ANDROID.app_events_*` as app_events
         -- add templated filter to reduce dataset to specified date partitions
          WHERE {% condition app_events.date_range%} TIMESTAMP(PARSE_DATE('%Y%m%d', REGEXP_EXTRACT(_TABLE_SUFFIX,r'\d\d\d\d\d\d\d\d'))) {% endcondition %}
         ;;
@@ -189,7 +189,7 @@ view: app_events__user_dim {
 
   dimension: user_id {
     type: string
-    sql: ${TABLE}.user_id ;;
+    sql: user_dim.app_info.app_instance_id ;;
   }
 
   dimension: user_properties {

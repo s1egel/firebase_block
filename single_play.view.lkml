@@ -17,20 +17,7 @@ view: single_play {
     sql: ${TABLE}.context_app_build ;;
   }
 
-  dimension: context_app_name {
-    type: string
-    sql: ${TABLE}.context_app_name ;;
-  }
 
-  dimension: context_app_namespace {
-    type: string
-    sql: ${TABLE}.context_app_namespace ;;
-  }
-
-  dimension: context_app_version {
-    type: string
-    sql: ${TABLE}.context_app_version ;;
-  }
 
   dimension: context_device_ad_tracking_enabled {
     type: yesno
@@ -274,8 +261,7 @@ view: single_play {
       media_item_name,
       publisher_name,
       context_library_name,
-      context_os_name,
-      context_app_name
+      context_os_name
     ]
   }
 }
